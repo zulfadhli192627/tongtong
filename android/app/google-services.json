@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "517497935426",
+    "project_id": "tongtong-45ede",
+    "storage_bucket": "tongtong-45ede.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:517497935426:android:7251192a9c3c5e57b3ffdb",
+        "android_client_info": {
+          "package_name": "com.example.tong_tong"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "517497935426-p7l2ta7cpjnhlebjv4ur8s8qmh3jr133.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzNiRoUCbvnHZIHANE5ncrkyoNLH0YKVI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "517497935426-p7l2ta7cpjnhlebjv4ur8s8qmh3jr133.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
