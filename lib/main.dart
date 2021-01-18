@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tong_tong/loan/loanHome.dart';
 import 'package:tong_tong/widget/receipt_scanner.dart';
 
 void main() => runApp(MyApp());
@@ -28,19 +29,22 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   @override
-  Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(8),
-          child: Column(
-            children: [
-              const SizedBox(height: 25),
-              ReceiptScanner(),
-              const SizedBox(height: 15),
-            ],
-          ),
-        ),
+  Widget build(BuildContext context) => MaterialApp(
+        home: LoanPage(),
       );
+  // Scaffold(
+  //     appBar: AppBar(
+  //       title: Text(widget.title),
+  //     ),
+  //     body: Padding(
+  //       padding: const EdgeInsets.all(8),
+  //       child: Column(
+  //         children: [
+  //           const SizedBox(height: 25),
+  //           ReceiptScanner(),
+  //           const SizedBox(height: 15),
+  //         ],
+  //       ),
+  //     ),
+  //   );
 }
