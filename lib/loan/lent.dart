@@ -85,6 +85,8 @@ class _LentDetailState extends State<LentDetail> {
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: RaisedButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0)),
               color: Colors.blue,
               onPressed: () {},
               child: Text(
