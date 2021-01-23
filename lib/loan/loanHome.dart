@@ -46,7 +46,9 @@ class LoanPage extends StatelessWidget {
             shrinkWrap: true,
             itemCount: 2,
             itemBuilder: (context, index) {
-              return LoanTile();
+              return LoanTile(
+                loantype: 'lent',
+              );
             },
           ),
           //end of lent
@@ -84,7 +86,9 @@ class LoanPage extends StatelessWidget {
             shrinkWrap: true,
             itemCount: 3,
             itemBuilder: (context, index) {
-              return LoanTile();
+              return LoanTile(
+                loantype: 'loan',
+              );
             },
           ),
           //end of loan section

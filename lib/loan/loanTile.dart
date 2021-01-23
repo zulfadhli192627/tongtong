@@ -4,15 +4,26 @@ import 'package:tong_tong/loan/lent.dart';
 import 'package:tong_tong/loan/loan.dart';
 
 class LoanTile extends StatelessWidget {
+  String loantype;
+
+  LoanTile({this.loantype});
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => LentDetail(),
-            ));
+        if (loantype == 'lent')
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => LentDetail(),
+              ));
+        else if (loantype == 'loan')
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => LoanDetail(),
+              ));
       },
       child: Container(
         decoration: tileDecoration(),
