@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tong_tong/conts/deco.dart';
+import 'package:tong_tong/loan/lent.dart';
 import 'package:tong_tong/loan/loan.dart';
 
 class LoanTile extends StatelessWidget {
@@ -10,7 +11,7 @@ class LoanTile extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => LoanDetail(),
+              builder: (context) => LentDetail(),
             ));
       },
       child: Container(
