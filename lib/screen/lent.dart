@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-import 'package:tong_tong/loan/lentList.dart';
+import 'package:tong_tong/widget/lentList.dart';
 
 class LentDetail extends StatefulWidget {
   @override

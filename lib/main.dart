@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tong_tong/loan/loanHome.dart';
+import 'package:tong_tong/screen/loanHome.dart';
 import 'package:tong_tong/widget/receipt_scanner.dart';
 
 void main() => runApp(MyApp());

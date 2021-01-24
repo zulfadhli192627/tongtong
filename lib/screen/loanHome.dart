@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tong_tong/loan/loanTile.dart';
+import 'package:tong_tong/widget/loanTile.dart';
 
 class LoanPage extends StatelessWidget {
   @override

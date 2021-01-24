@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tong_tong/loan/loanList.dart';
+import 'package:tong_tong/widget/loanList.dart';
 
 class LoanDetail extends StatefulWidget {
   @override
@@ -14,6 +14,16 @@ class _LoanDetailState extends State<LoanDetail> {
         backgroundColor: Colors.blue,
         centerTitle: true,
         title: Text('Loan'),
+      ),
+      bottomNavigationBar: InkWell(
+        child: FlatButton.icon(
+          height: 50.0,
+          color: Colors.blue,
+          textColor: Colors.white,
+          icon: Icon(Icons.camera),
+          label: Text('Camera'),
+          onPressed: () {},
+        ),
       ),
       body: ListView(children: <Widget>[
         // Loan List Title ----------------------------------------------------
