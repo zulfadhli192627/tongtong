@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:tong_tong/screen/loanHome.dart';
+import 'package:tong_tong/screen/login.dart';
 import 'package:tong_tong/widget/receipt_scanner.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(MainPage(title: 'Tong Tong'));
 
 class MyApp extends StatelessWidget {
   final String title = 'Text Recognition';
@@ -30,7 +31,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) => MaterialApp(
-        home: LoanPage(),
+        home: Login(),
       );
   // Scaffold(
   //     appBar: AppBar(
