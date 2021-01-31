@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tong_tong/screen/bill_tile.dart';
+import 'package:tong_tong/widget/bill_tile.dart';
 
 class BillList extends StatefulWidget {
   @override
@@ -10,7 +10,7 @@ class _BillListState extends State<BillList> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: 5,
+      itemCount: 1,
       itemBuilder: (context, index) {
         return BillTile();
       },
