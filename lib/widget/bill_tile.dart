@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tong_tong/screen/groupPage.dart';
 
 class BillTile extends StatelessWidget {
   //final Bill bill;
@@ -19,6 +20,12 @@ class BillTile extends StatelessWidget {
               //backgroundImage: ,
             ),
             title: Text("Group Name"),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Group()),
+              );
+            },
           )),
     );
   }

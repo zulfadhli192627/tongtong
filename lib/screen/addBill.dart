@@ -3,6 +3,7 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
 import 'package:tong_tong/conts/textInputDecoration.dart';
+import 'package:tong_tong/screen/groupPage.dart';
 
 class AddBill extends StatefulWidget {
   AddBill({Key key}) : super(key: key);
@@ -156,7 +157,7 @@ class _AddBillState extends State<AddBill> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => AddBill()),
+                                          builder: (context) => Group()),
                                     );
                                   },
                                 ),

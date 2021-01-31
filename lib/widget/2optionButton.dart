@@ -6,6 +6,7 @@ import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:tong_tong/conts/inputFormatter.dart';
 import 'package:tong_tong/conts/textInputDecoration.dart';
 import 'package:tong_tong/screen/addBill.dart';
+import 'package:tong_tong/screen/groupPage.dart';
 
 class TwoOptionButton extends StatefulWidget {
   const TwoOptionButton({Key key}) : super(key: key);
@@ -58,7 +59,13 @@ class _TwoOptionButtonState extends State<TwoOptionButton> {
                               padding: EdgeInsets.all(0),
                               icon: Image.asset('images/right_arrow.png'),
                               iconSize: 50,
-                              onPressed: () {}),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Group()),
+                                );
+                              }),
                         ],
                       ),
                     ),
