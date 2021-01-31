@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tong_tong/screen/loanHome.dart';
+import 'package:tong_tong/screen/homescreen.dart';
 import 'package:tong_tong/screen/login.dart';
-import 'package:tong_tong/widget/receipt_scanner.dart';
 
 void main() => runApp(MainPage(title: 'Tong Tong'));
 
@@ -31,21 +30,6 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) => MaterialApp(
-        home: Login(),
+        home: Homepage(),
       );
-  // Scaffold(
-  //     appBar: AppBar(
-  //       title: Text(widget.title),
-  //     ),
-  //     body: Padding(
-  //       padding: const EdgeInsets.all(8),
-  //       child: Column(
-  //         children: [
-  //           const SizedBox(height: 25),
-  //           ReceiptScanner(),
-  //           const SizedBox(height: 15),
-  //         ],
-  //       ),
-  //     ),
-  //   );
 }
