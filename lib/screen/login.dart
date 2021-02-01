@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_login/flutter_login.dart';
+import 'package:tong_tong/API/auth.dart';
 import 'package:tong_tong/screen/homescreen.dart';
 
 class Login extends StatefulWidget {
@@ -9,12 +10,24 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   Future<String> _signIn(LoginData data) async {
-    Navigator.pop(
-      context,
-      MaterialPageRoute(
-        builder: (context) => Homepage(),
-      ),
-    );
+    AuthService().signInWithEmailAndPassword(data);
+    Navigator.pop(context);
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => Homepage(),
+        ));
+    return null;
+  }
+
+  Future<String> _signUp(LoginData data) async {
+    AuthService().registerWithEmailAndPassword(data);
+    Navigator.pop(context);
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => Homepage(),
+        ));
     return null;
   }
 
@@ -23,7 +36,7 @@ class _LoginState extends State<Login> {
     return SafeArea(
       child: FlutterLogin(
         onLogin: _signIn,
-        onSignup: (_) => Future(null),
+        onSignup: _signUp,
         onRecoverPassword: (_) => null,
         title: 'Tong Tong',
         theme: LoginTheme(

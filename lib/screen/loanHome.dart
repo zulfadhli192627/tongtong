@@ -12,7 +12,7 @@ class LoanPage extends StatelessWidget {
       ),
       body: ListView(
         children: <Widget>[
-          //Lent Section
+          //Lent Section--------------------------------------------------------
           Container(
             color: Colors.black,
             height: 50.0,
@@ -51,47 +51,7 @@ class LoanPage extends StatelessWidget {
               );
             },
           ),
-          //end of lent
-          //start of Loan
-          Container(
-            color: Colors.black,
-            height: 50.0,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                  child: Text(
-                    'Loan',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
-                  child: Text(
-                    'RM00.00',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          ListView.builder(
-            shrinkWrap: true,
-            itemCount: 3,
-            itemBuilder: (context, index) {
-              return LoanTile(
-                loantype: 'loan',
-              );
-            },
-          ),
-          //end of loan section
+          //end of lent---------------------------------------------------------
         ],
       ),
     );

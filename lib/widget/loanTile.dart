@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tong_tong/conts/deco.dart';
-import 'package:tong_tong/screen/lent.dart';
+import 'package:tong_tong/dump/lent.dart';
 import 'package:tong_tong/screen/loan.dart';
 
 class LoanTile extends StatelessWidget {
-  String loantype;
+  final String loantype;
 
   LoanTile({this.loantype});
 
