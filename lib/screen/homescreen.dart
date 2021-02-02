@@ -1,6 +1,10 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_session/flutter_session.dart';
+import 'package:provider/provider.dart';
+import 'package:tong_tong/API/auth.dart';
+import 'package:tong_tong/model/user.dart';
 import 'package:tong_tong/screen/billHome.dart';
 import 'package:tong_tong/screen/loanHome.dart';
 import 'package:tong_tong/screen/login.dart';
@@ -14,8 +18,12 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
   bool chooseSplit = true;
+
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<User>(context, listen: true);
+    print("User Email" + user.email.toString());
+
     return Scaffold(
         body: ListView(
       children: <Widget>[
@@ -141,6 +149,7 @@ class _HomepageState extends State<Homepage> {
                     icon: Icon(Icons.person),
                     label: Text('Log Out'),
                     onPressed: () {
+                      AuthService().signOut();
                       Navigator.push(
                         context,
                         MaterialPageRoute(

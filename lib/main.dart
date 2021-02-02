@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tong_tong/API/auth.dart';
+import 'package:tong_tong/model/user.dart';
 import 'package:tong_tong/screen/homescreen.dart';
 import 'package:tong_tong/screen/login.dart';
 
@@ -29,7 +32,12 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   @override
-  Widget build(BuildContext context) => MaterialApp(
+  Widget build(BuildContext context) {
+    return StreamProvider<User>.value(
+      value: AuthService().user,
+      child: MaterialApp(
         home: Login(),
-      );
+      ),
+    );
+  }
 }
