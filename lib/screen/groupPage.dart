@@ -1,4 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tong_tong/conts/textInputDecoration.dart';
 import 'package:tong_tong/model/user.dart';
 import 'package:tong_tong/widget/bill_item.dart';
 import 'package:tong_tong/widget/bill_tile.dart';
@@ -12,8 +15,88 @@ class Group extends StatefulWidget {
 }
 
 class _GroupState extends State<Group> {
+  String itemName, price, quantity;
+
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<User>(context, listen: true);
+
+    Future<void> _showChoiceDialog(BuildContext context) {
+      return showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Add Item'),
+              content: SingleChildScrollView(
+                child: Form(
+                  child: Column(
+                    children: <Widget>[
+                      Container(
+                        height: 50,
+                        child: TextFormField(
+                          decoration: textInputDecoration.copyWith(
+                              labelText: 'Item Name'),
+                          validator: (val) =>
+                              val.isEmpty ? 'Enter Item Name' : null,
+                          onChanged: (val) => setState(() => itemName = val),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        height: 50,
+                        child: TextFormField(
+                          decoration: textInputDecoration.copyWith(
+                              labelText: 'Item Price'),
+                          validator: (val) =>
+                              val.isEmpty ? 'Enter Item Price' : null,
+                          onChanged: (val) => setState(() => price = val),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        height: 50,
+                        child: TextFormField(
+                          decoration: textInputDecoration.copyWith(
+                              labelText: 'Quantity'),
+                          validator: (val) =>
+                              val.isEmpty ? 'Enter Quantiity' : null,
+                          onChanged: (val) => setState(() => quantity = val),
+                        ),
+                      ),
+                      RaisedButton(
+                          child: Text("Update"),
+                          onPressed: () async {
+                            final CollectionReference tongCollection =
+                                Firestore.instance.collection('tongtong');
+
+                            await tongCollection
+                                .document(user.email)
+                                .collection('group')
+                                .document(widget.group.id)
+                                .updateData({
+                              "Item": FieldValue.arrayUnion([
+                                {
+                                  "name": 'Ali',
+                                  "itemName": itemName,
+                                  "price": price,
+                                  "quantity": quantity,
+                                },
+                              ])
+                            });
+                            Navigator.pop(context);
+                          })
+                    ],
+                  ),
+                ),
+              ),
+            );
+          });
+    }
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -87,7 +170,11 @@ class _GroupState extends State<Group> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              RaisedButton(child: Text('Add Item'), onPressed: () {}),
+              RaisedButton(
+                  child: Text('Add Item'),
+                  onPressed: () {
+                    _showChoiceDialog(context);
+                  }),
               SizedBox(
                 width: 30,
               ),
