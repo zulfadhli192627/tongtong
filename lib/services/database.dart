@@ -12,6 +12,7 @@ class DatabaseService {
   List<GroupData> _groupdatafromsnapshot(QuerySnapshot snapshot) {
     return snapshot.documents.map((doc) {
       return GroupData(
+          //test
           id: doc.data['groupid'] ?? '',
           groupname: doc.data['groupName'] ?? '',
           imgurl: doc.data['imgurl'] ?? '',
