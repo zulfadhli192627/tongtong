@@ -1,32 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:tong_tong/widget/loanList.dart';
+import 'package:qr_flutter/qr_flutter.dart';
+import 'package:tong_tong/widget/lentList.dart';
 
-class LoanDetail extends StatefulWidget {
+class LentDetail extends StatefulWidget {
   @override
-  _LoanDetailState createState() => _LoanDetailState();
+  _LentDetailState createState() => _LentDetailState();
 }
 
-class _LoanDetailState extends State<LoanDetail> {
+class _LentDetailState extends State<LentDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
         centerTitle: true,
-        title: Text('Loan'),
-      ),
-      bottomNavigationBar: InkWell(
-        child: FlatButton.icon(
-          height: 50.0,
-          color: Colors.blue,
-          textColor: Colors.white,
-          icon: Icon(Icons.camera),
-          label: Text('Camera'),
-          onPressed: () {},
-        ),
+        title: Text('Lent'),
       ),
       body: ListView(children: <Widget>[
-        // Loan List Title ----------------------------------------------------
+        // Lent List Title ----------------------------------------------------
         Container(
           color: Colors.black,
           height: 50.0,
@@ -83,18 +74,47 @@ class _LoanDetailState extends State<LoanDetail> {
             shrinkWrap: true,
             itemCount: 2,
             itemBuilder: (context, index) {
-              return LoanList();
+              return LentList();
             },
           ),
         ),
+        SizedBox(height: 10.0),
+        //Settle Button UI ---------------------------------------------------
+        Align(
+          alignment: Alignment.bottomRight,
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: RaisedButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0)),
+              color: Colors.blue,
+              onPressed: () {},
+              child: Text(
+                'Settle',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ),
+        ),
         SizedBox(
-          height: 30.0,
+          height: 20.0,
         ),
         Text(
-          'Scan QR code from group master to delete the loan list',
+          'Let the loaner scan QR code as paid confirmation or Click Settle button to delete bill group',
           style: TextStyle(fontWeight: FontWeight.bold),
           textAlign: TextAlign.center,
         ),
+        SizedBox(
+          height: 20.0,
+        ),
+        Align(
+          alignment: Alignment.center,
+          child: QrImage(
+            data: 'https://pub.dev/packages/qr_flutter',
+            version: QrVersions.auto,
+            size: 200.0,
+          ),
+        )
       ]),
     );
   }

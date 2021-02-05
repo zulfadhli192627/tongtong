@@ -10,3 +10,10 @@ class UserData {
 
   UserData({this.email, this.picUrl});
 }
+
+class Menu {
+  final String name;
+  final String price;
+
+  Menu({this.name, this.price});
+}
