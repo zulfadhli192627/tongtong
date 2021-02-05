@@ -1,5 +1,7 @@
+import 'dart:async';
 import 'dart:ui';
 
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_session/flutter_session.dart';
 import 'package:provider/provider.dart';
@@ -18,11 +20,24 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
   bool chooseSplit = true;
+  BannerAd _bannerAd;
+
+  BannerAd createBannerAd() {
+    return BannerAd(
+        adUnitId: 'ca-app-pub-6206074243422299/6285759440',
+        size: AdSize.smartBanner,
+        listener: (MobileAdEvent event) {
+          print('Banner event: $event');
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context, listen: true);
     print("User Email" + user.email.toString());
+    Timer(Duration(seconds: 10), () {
+      _bannerAd?.show();
+    });
 
     return Scaffold(
         body: ListView(
@@ -168,5 +183,12 @@ class _HomepageState extends State<Homepage> {
         ],
       ),
     );
+  }
+
+  void initState() {
+    super.initState();
+    FirebaseAdMob.instance
+        .initialize(appId: 'ca-app-pub-6206074243422299~3820761092');
+    _bannerAd = createBannerAd()..load();
   }
 }

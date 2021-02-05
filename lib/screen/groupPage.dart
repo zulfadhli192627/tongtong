@@ -87,6 +87,7 @@ class _GroupState extends State<Group> {
                               ])
                             });
                             Navigator.pop(context);
+                            setState(() {});
                           })
                     ],
                   ),

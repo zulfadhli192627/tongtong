@@ -43,8 +43,8 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
-        <meta-data
-            android:name="com.google.firebase.ml.vision.DEPENDENCIES"
-            android:value="ocr" />
+       <meta-data
+           android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-6206074243422299~3820761092"/>
     </application>
 </manifest>
