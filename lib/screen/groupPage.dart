@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tong_tong/conts/textInputDecoration.dart';
 import 'package:tong_tong/model/user.dart';
 import 'package:tong_tong/widget/ItemTile.dart';
-import 'package:tong_tong/widget/bill_tile.dart';
 
 class Group extends StatefulWidget {
   final GroupData group;
@@ -97,6 +97,20 @@ class _GroupState extends State<Group> {
           });
     }
 
+    Future<void> ImageDialog(BuildContext context, String url) {
+      return showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              content: Container(
+                height: 500,
+                width: 300,
+                child: Image.network(url),
+              ),
+            );
+          });
+    }
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -109,7 +123,15 @@ class _GroupState extends State<Group> {
               border: Border.all(),
             ),
             child: GestureDetector(
-              onTap: () {},
+              onTap: () async {
+                dynamic url = await FirebaseStorage.instance
+                    .ref()
+                    .child('images')
+                    .child(widget.group.imgurl)
+                    .getDownloadURL();
+
+                ImageDialog(context, url);
+              },
               child: Text('View Receipt'),
             ),
           ),
