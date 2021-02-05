@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tong_tong/model/user.dart';
 
 import 'bill_item.dart';
 
@@ -12,10 +14,11 @@ class ItemList extends StatefulWidget {
 class _ItemListState extends State<ItemList> {
   @override
   Widget build(BuildContext context) {
+    final item = Provider.of<List<GroupData>>(context, listen: true);
     return ListView.builder(
-      itemCount: 1,
+      itemCount: item.length,
       itemBuilder: (context, index) {
-        return BillItem();
+        return BillItem(item: item[index]);
       },
     );
   }

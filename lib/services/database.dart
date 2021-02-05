@@ -11,12 +11,21 @@ class DatabaseService {
 
   List<GroupData> _groupdatafromsnapshot(QuerySnapshot snapshot) {
     return snapshot.documents.map((doc) {
+      List<Item> items = [];
+      List<dynamic> itemMap = doc.data['Item'];
+      itemMap.forEach((element) {
+        items.add(new Item(
+            itemName: element['itemName'],
+            name: element['name'],
+            price: element['price'],
+            quantity: element['quantity']));
+      });
       return GroupData(
-          //test
           id: doc.data['groupid'] ?? '',
           groupname: doc.data['groupName'] ?? '',
           imgurl: doc.data['imgurl'] ?? '',
-          tax: doc.data['tax'] ?? '');
+          tax: doc.data['tax'] ?? '',
+          item: items);
     }).toList();
   }
 

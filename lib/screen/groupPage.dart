@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tong_tong/conts/textInputDecoration.dart';
 import 'package:tong_tong/model/user.dart';
-import 'package:tong_tong/widget/bill_item.dart';
+import 'package:tong_tong/widget/ItemTile.dart';
 import 'package:tong_tong/widget/bill_tile.dart';
 
 class Group extends StatefulWidget {
@@ -20,7 +20,6 @@ class _GroupState extends State<Group> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context, listen: true);
-
     Future<void> _showChoiceDialog(BuildContext context) {
       return showDialog(
           context: context,
@@ -146,9 +145,12 @@ class _GroupState extends State<Group> {
             padding: EdgeInsets.fromLTRB(50, 0, 50, 0),
             child: ListView.builder(
                 shrinkWrap: true,
-                itemCount: 1,
+                itemCount: widget.group.item.length,
                 itemBuilder: (context, index) {
-                  return BillItem();
+                  return BillItem(
+                    item: widget.group,
+                    index: index,
+                  );
                 }),
           ),
           SizedBox(

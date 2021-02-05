@@ -23,6 +23,16 @@ class GroupData {
   final String groupname;
   final String imgurl;
   final String tax;
+  final List<Item> item;
 
-  GroupData({this.id, this.groupname, this.imgurl, this.tax});
+  GroupData({this.id, this.groupname, this.imgurl, this.tax, this.item});
+}
+
+class Item {
+  final String itemName;
+  final String name;
+  final String price;
+  final String quantity;
+
+  Item({this.itemName, this.name, this.price, this.quantity});
 }
