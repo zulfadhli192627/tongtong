@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:random_string/random_string.dart';
 import 'dart:io';
 
 import 'package:tong_tong/conts/textInputDecoration.dart';
 import 'package:tong_tong/screen/groupPage.dart';
+import 'package:tong_tong/services/uploadImage.dart';
 
 class AddBill extends StatefulWidget {
   AddBill({Key key}) : super(key: key);
@@ -17,6 +19,7 @@ class _AddBillState extends State<AddBill> {
   final picker = ImagePicker();
   String _groupName;
   String _tax;
+  String _groupID = randomAlphaNumeric(6).toUpperCase();
 
   Future _chooseSource(ImageSource source) async {
     final selected = await picker.getImage(source: source);
@@ -150,17 +153,12 @@ class _AddBillState extends State<AddBill> {
                                 SizedBox(
                                   height: 20,
                                 ),
-                                FlatButton.icon(
-                                  label: Text('Upload'),
-                                  icon: Icon(Icons.cloud_upload),
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Group()),
-                                    );
-                                  },
-                                ),
+                                Upload(
+                                  file: imageFile,
+                                  groupName: _groupName,
+                                  tax: _tax,
+                                  groupID: _groupID,
+                                )
                               ],
                             ),
                           ),

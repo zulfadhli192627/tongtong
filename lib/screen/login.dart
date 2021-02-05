@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_login/flutter_login.dart';
-import 'package:tong_tong/API/auth.dart';
+import 'package:tong_tong/services/auth.dart';
 import 'package:tong_tong/model/user.dart';
 import 'package:tong_tong/screen/homescreen.dart';
 import 'package:provider/provider.dart';

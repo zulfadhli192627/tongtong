@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tong_tong/widget/bill_list.dart';
+import 'package:tong_tong/widget/bill_item.dart';
+import 'package:tong_tong/widget/bill_tile.dart';
 
 class Group extends StatefulWidget {
   Group({Key key}) : super(key: key);
@@ -16,33 +17,81 @@ class _GroupState extends State<Group> {
         centerTitle: true,
         backgroundColor: Colors.blue,
         title: Text('Group Name here'),
-      ),
-      body: ListView(
-        children: <Widget>[
-          SizedBox(
-            height: 30,
-          ),
+        actions: <Widget>[
           Container(
-            padding: EdgeInsets.all(20),
-            child: Text(
-              "Group Code",
-              style: TextStyle(fontSize: 25),
+            margin: EdgeInsets.fromLTRB(0, 20, 20, 0),
+            decoration: BoxDecoration(
+              border: Border.all(),
+            ),
+            child: GestureDetector(
+              onTap: () {},
+              child: Text('View Receipt'),
             ),
           ),
-          Column(
+        ],
+      ),
+      body: ListView(
+        shrinkWrap: true,
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.all(20),
+            child: Center(
+              child: Text(
+                "Group Code: ABC123",
+                style: TextStyle(fontSize: 25),
+              ),
+            ),
+          ),
+          Row(
             children: <Widget>[
-              Icon(Icons.person_add),
-              Icon(Icons.person),
-              Icon(Icons.person),
+              Icon(
+                Icons.person,
+                size: 75,
+              ),
+              Icon(
+                Icons.person,
+                size: 75,
+              ),
             ],
           ),
           SizedBox(
             height: 20,
           ),
-          BillList(),
+          Padding(
+            padding: EdgeInsets.fromLTRB(50, 0, 50, 0),
+            child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: 1,
+                itemBuilder: (context, index) {
+                  return BillItem();
+                }),
+          ),
           SizedBox(
             height: 20,
           ),
+          Align(
+            alignment: Alignment.centerRight,
+            child: Container(
+              padding: EdgeInsets.only(right: 45),
+              child: Text(
+                'Tax: 6%',
+                style: TextStyle(fontSize: 20),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              RaisedButton(child: Text('Add Item'), onPressed: () {}),
+              SizedBox(
+                width: 30,
+              ),
+              RaisedButton(child: Text('Calculate Total'), onPressed: () {}),
+            ],
+          )
         ],
       ),
     );

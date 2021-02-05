@@ -10,7 +10,7 @@ class _BillListState extends State<BillList> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: 1,
+      itemCount: 0,
       itemBuilder: (context, index) {
         return BillTile();
       },

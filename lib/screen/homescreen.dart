@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_session/flutter_session.dart';
 import 'package:provider/provider.dart';
-import 'package:tong_tong/API/auth.dart';
+import 'package:tong_tong/services/auth.dart';
 import 'package:tong_tong/model/user.dart';
 import 'package:tong_tong/screen/billHome.dart';
 import 'package:tong_tong/screen/loanHome.dart';
