@@ -12,15 +12,17 @@ class DatabaseService {
     return await tongCollection.document(email).setData({'picUrl': picUrl});
   }
 
-  // create group code and its content
-  Future createGroup(String groupcode, String amount, List<Menu> menu) async {
+  // create group code
+  Future createGroup(
+      String groupcode, String imgurl, String tax, String groupid) async {
     return await tongCollection
         .document(email)
         .collection('group')
         .document(groupcode)
         .setData({
-      'amount': amount,
-      'menu': FieldValue.arrayUnion([menu])
+      'tax': tax,
+      'imgurl': imgurl,
+      'groupId': groupid,
     });
   }
 }
