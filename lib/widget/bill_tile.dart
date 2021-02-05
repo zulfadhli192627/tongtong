@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tong_tong/model/user.dart';
 import 'package:tong_tong/screen/groupPage.dart';
 
 class BillTile extends StatelessWidget {
   //final Bill bill;
   //BillTile({this.bill});
-
-  const BillTile({Key key}) : super(key: key);
+  final GroupData group;
+  const BillTile({Key key, this.group}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +21,11 @@ class BillTile extends StatelessWidget {
               backgroundColor: Colors.pink,
               //backgroundImage: ,
             ),
-            title: Text("Group Name"),
+            title: Text(group.groupname),
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Group()),
+                MaterialPageRoute(builder: (context) => Group(group: group)),
               );
             },
           )),

@@ -23,6 +23,7 @@ class CreateGroup extends StatelessWidget {
         .collection('group')
         .document(groupid)
         .setData({
+      'groupid': groupid,
       'tax': tax,
       'imgurl': url,
       'groupName': groupName,

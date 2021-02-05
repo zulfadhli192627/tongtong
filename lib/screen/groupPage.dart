@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:tong_tong/model/user.dart';
 import 'package:tong_tong/widget/bill_item.dart';
 import 'package:tong_tong/widget/bill_tile.dart';
 
 class Group extends StatefulWidget {
-  Group({Key key}) : super(key: key);
+  final GroupData group;
+  Group({Key key, this.group}) : super(key: key);
 
   @override
   _GroupState createState() => _GroupState();
@@ -16,7 +18,7 @@ class _GroupState extends State<Group> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.blue,
-        title: Text('Group Name here'),
+        title: Text(widget.group.groupname),
         actions: <Widget>[
           Container(
             margin: EdgeInsets.fromLTRB(0, 20, 20, 0),
@@ -37,7 +39,7 @@ class _GroupState extends State<Group> {
             padding: EdgeInsets.all(20),
             child: Center(
               child: Text(
-                "Group Code: ABC123",
+                "Group Code:" + widget.group.id,
                 style: TextStyle(fontSize: 25),
               ),
             ),
@@ -74,7 +76,7 @@ class _GroupState extends State<Group> {
             child: Container(
               padding: EdgeInsets.only(right: 45),
               child: Text(
-                'Tax: 6%',
+                'Tax: ' + widget.group.tax + '%',
                 style: TextStyle(fontSize: 20),
               ),
             ),
