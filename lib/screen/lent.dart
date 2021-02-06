@@ -121,22 +121,6 @@ class _LentDetailState extends State<LentDetail> {
         SizedBox(
           height: 20.0,
         ),
-        Text(
-          'Let the loaner scan QR code as paid confirmation or Click Settle button to delete bill group',
-          style: TextStyle(fontWeight: FontWeight.bold),
-          textAlign: TextAlign.center,
-        ),
-        SizedBox(
-          height: 20.0,
-        ),
-        Align(
-          alignment: Alignment.center,
-          child: QrImage(
-            data: 'https://pub.dev/packages/qr_flutter',
-            version: QrVersions.auto,
-            size: 200.0,
-          ),
-        )
       ]),
       bottomNavigationBar: Container(
         height: 50.0,
