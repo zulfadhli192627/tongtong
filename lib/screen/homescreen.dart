@@ -3,7 +3,6 @@ import 'dart:ui';
 
 import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_session/flutter_session.dart';
 import 'package:provider/provider.dart';
 import 'package:tong_tong/services/auth.dart';
 import 'package:tong_tong/model/user.dart';
@@ -110,7 +109,6 @@ class _HomepageState extends State<Homepage> {
                             color: Colors.white,
                           ),
                           onPressed: () {
-                            _bannerAd.dispose();
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -160,6 +158,7 @@ class _HomepageState extends State<Homepage> {
                           CircleAvatar(
                             //Put user photo here
                             backgroundImage: NetworkImage(userData.picUrl),
+                            radius: 30,
                           ),
                           SizedBox(
                             width: 15.0,
@@ -170,7 +169,7 @@ class _HomepageState extends State<Homepage> {
                           ),
                           //sign out button here
                           SizedBox(
-                            width: 132,
+                            width: 120,
                           ),
                           FlatButton.icon(
                             icon: Icon(Icons.person),
@@ -201,10 +200,17 @@ class _HomepageState extends State<Homepage> {
         });
   }
 
+  @override
   void initState() {
     super.initState();
     FirebaseAdMob.instance
         .initialize(appId: 'ca-app-pub-6206074243422299~3820761092');
     _bannerAd = createBannerAd()..load();
+  }
+
+  @override
+  void dispose() {
+    _bannerAd?.dispose();
+    super.dispose();
   }
 }

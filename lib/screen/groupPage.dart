@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tong_tong/conts/textInputDecoration.dart';
 import 'package:tong_tong/model/user.dart';
+import 'package:tong_tong/services/database.dart';
 import 'package:tong_tong/widget/ItemTile.dart';
 
 class Group extends StatefulWidget {
@@ -114,97 +115,154 @@ class _GroupState extends State<Group> {
           });
     }
 
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: Colors.blue,
-        title: Text(widget.group.groupname),
-        actions: <Widget>[
-          Container(
-            margin: EdgeInsets.fromLTRB(0, 20, 20, 0),
-            decoration: BoxDecoration(
-              border: Border.all(),
+    // Future<void> totalDialog(BuildContext context, double total) {
+    //   return showDialog(
+    //       context: context,
+    //       builder: (BuildContext context) {
+    //         return AlertDialog(
+    //           title: Text('Total Amount'),
+    //           content: Container(
+    //             child: Text('The total price is RM' + total.toString()),
+    //           ),
+    //         );
+    //       });
+    // }
+
+    return StreamBuilder<UserData>(
+        stream: DatabaseService(email: user.email).userData,
+        builder: (context, snapshot) {
+          UserData userData = snapshot.data;
+          return Scaffold(
+            appBar: AppBar(
+              centerTitle: true,
+              backgroundColor: Colors.blue,
+              title: Text(widget.group.groupname),
+              actions: <Widget>[
+                Container(
+                  margin: EdgeInsets.fromLTRB(0, 20, 20, 10),
+                  decoration: BoxDecoration(
+                    border: Border.symmetric(),
+                  ),
+                  child: GestureDetector(
+                    onTap: () async {
+                      imageDialog(context, widget.group.imgurl);
+                    },
+                    child: Text('View Receipt'),
+                  ),
+                ),
+              ],
             ),
-            child: GestureDetector(
-              onTap: () async {
-                imageDialog(context, widget.group.imgurl);
-              },
-              child: Text('View Receipt'),
+            body: ListView(
+              shrinkWrap: true,
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.all(20),
+                  child: Center(
+                    child: Text(
+                      "Group Code:" + widget.group.id,
+                      style: TextStyle(fontSize: 25),
+                    ),
+                  ),
+                ),
+                // ListView(
+                //   children: <Widget>[
+                //     SizedBox(
+                //       height: 100,
+                //       child: ListView.builder(
+                //           scrollDirection: Axis.horizontal,
+                //           itemCount: 1,
+                //           itemBuilder: (context, index) {
+                //             return Row(
+                //               children: [
+                //                 CircleAvatar(
+                //                   backgroundImage:
+                //                       NetworkImage(userData.picUrl),
+                //                   child: Text('Name'),
+                //                 )
+                //               ],
+                //             );
+                //           }),
+                //     )
+                //   ],
+                // ),
+                Row(
+                  children: <Widget>[
+                    SizedBox(
+                      width: 30,
+                    ),
+                    Column(
+                      children: [
+                        CircleAvatar(
+                          radius: 35,
+                          backgroundImage: NetworkImage(userData.picUrl),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(userData.name)
+                      ],
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(50, 0, 50, 0),
+                  child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: widget.group.item.length,
+                      itemBuilder: (context, index) {
+                        return BillItem(
+                          item: widget.group,
+                          index: index,
+                        );
+                      }),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Container(
+                    padding: EdgeInsets.only(right: 45),
+                    child: Text(
+                      'Tax: ' + widget.group.tax + '%',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    RaisedButton(
+                        child: Text('Add Item'),
+                        onPressed: () {
+                          _showChoiceDialog(context);
+                        }),
+                    // SizedBox(
+                    //   width: 30,
+                    // ),
+                    // RaisedButton(
+                    //     child: Text('Calculate Total'),
+                    //     onPressed: () {
+                    //       double total = 0;
+
+                    //       total = total * int.parse(widget.group.tax);
+                    //       totalDialog(context, total);
+                    //     }),
+                  ],
+                )
+              ],
             ),
-          ),
-        ],
-      ),
-      body: ListView(
-        shrinkWrap: true,
-        children: <Widget>[
-          Container(
-            padding: EdgeInsets.all(20),
-            child: Center(
-              child: Text(
-                "Group Code:" + widget.group.id,
-                style: TextStyle(fontSize: 25),
-              ),
+            bottomNavigationBar: Container(
+              height: 50.0,
+              color: Colors.white,
             ),
-          ),
-          Row(
-            children: <Widget>[
-              Icon(
-                Icons.person,
-                size: 75,
-              ),
-              Icon(
-                Icons.person,
-                size: 75,
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(50, 0, 50, 0),
-            child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: widget.group.item.length,
-                itemBuilder: (context, index) {
-                  return BillItem(
-                    item: widget.group,
-                    index: index,
-                  );
-                }),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Align(
-            alignment: Alignment.centerRight,
-            child: Container(
-              padding: EdgeInsets.only(right: 45),
-              child: Text(
-                'Tax: ' + widget.group.tax + '%',
-                style: TextStyle(fontSize: 20),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              RaisedButton(
-                  child: Text('Add Item'),
-                  onPressed: () {
-                    _showChoiceDialog(context);
-                  }),
-              SizedBox(
-                width: 30,
-              ),
-              RaisedButton(child: Text('Calculate Total'), onPressed: () {}),
-            ],
-          )
-        ],
-      ),
-    );
+          );
+        });
   }
 }

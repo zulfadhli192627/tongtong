@@ -18,8 +18,7 @@ class BillTile extends StatelessWidget {
           child: ListTile(
             leading: CircleAvatar(
               radius: 25.0,
-              backgroundColor: Colors.pink,
-              //backgroundImage: ,
+              backgroundImage: NetworkImage(group.imgurl),
             ),
             title: Text(group.groupname),
             onTap: () {

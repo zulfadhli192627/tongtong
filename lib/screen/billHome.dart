@@ -25,6 +25,10 @@ class BillHome extends StatelessWidget {
           child: BillList(),
         ),
         floatingActionButton: TwoOptionButton(),
+        bottomNavigationBar: Container(
+          height: 50,
+          color: Colors.white,
+        ),
       ),
     );
   }
