@@ -1,17 +1,35 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:tong_tong/model/user.dart';
+import 'package:tong_tong/screen/lendHome.dart';
 import 'package:tong_tong/widget/lentList.dart';
 
 class LentDetail extends StatefulWidget {
   GroupData group;
-  LentDetail({this.group});
+  String email;
+  LentDetail({this.group, this.email});
   @override
   _LentDetailState createState() => _LentDetailState();
 }
 
 class _LentDetailState extends State<LentDetail> {
+  void deleteGroup() {
+    Firestore.instance
+        .collection('tongtong')
+        .document(widget.email)
+        .collection('group')
+        .document(widget.group.id)
+        .delete();
+    Navigator.pop(context);
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => LoanPage(),
+        ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,7 +110,7 @@ class _LentDetailState extends State<LentDetail> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5.0)),
               color: Colors.blue,
-              onPressed: () {},
+              onPressed: deleteGroup,
               child: Text(
                 'Settle',
                 style: TextStyle(color: Colors.white),
