@@ -181,13 +181,6 @@ class _CreateProfileState extends State<CreateProfile> {
                       onPressed: () async {
                         await DatabaseService(email: widget.email)
                             .updateUserProfile(imageFile, name);
-                        Navigator.pop(context);
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Homepage(),
-                          ),
-                        );
                       },
                     ),
                   ],

@@ -47,6 +47,7 @@ class DatabaseService {
     String fileName = name + DateTime.now().toString();
 
     _uploadTask = _storage.ref().child('user/' + fileName).putFile(file);
+
     dynamic url = await FirebaseStorage.instance
         .ref()
         .child('user')

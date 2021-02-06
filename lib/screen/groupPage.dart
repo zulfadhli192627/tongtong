@@ -101,11 +101,14 @@ class _GroupState extends State<Group> {
       return showDialog(
           context: context,
           builder: (BuildContext context) {
-            return AlertDialog(
-              content: Container(
+            return Dialog(
+              child: Container(
                 height: 500,
                 width: 300,
-                child: Image.network(url),
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                  image: new NetworkImage(url),
+                )),
               ),
             );
           });
@@ -124,13 +127,7 @@ class _GroupState extends State<Group> {
             ),
             child: GestureDetector(
               onTap: () async {
-                dynamic url = await FirebaseStorage.instance
-                    .ref()
-                    .child('images')
-                    .child(widget.group.imgurl)
-                    .getDownloadURL();
-
-                imageDialog(context, url);
+                imageDialog(context, widget.group.imgurl);
               },
               child: Text('View Receipt'),
             ),
