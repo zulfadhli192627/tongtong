@@ -35,6 +35,11 @@ class DatabaseService {
     }).toList();
   }
 
+  UserData _userdatafromsnapshot(DocumentSnapshot snapshot) {
+    return UserData(
+        name: snapshot.data['name'], picUrl: snapshot.data['picUrl']);
+  }
+
   //to create and update user doc data
   Future updateUserData(String picUrl) async {
     return await tongCollection.document(email).setData({'picUrl': picUrl});
@@ -69,5 +74,12 @@ class DatabaseService {
         .collection('group')
         .snapshots()
         .map((_groupdatafromsnapshot));
+  }
+
+  Stream<UserData> get userData {
+    return tongCollection
+        .document(email)
+        .snapshots()
+        .map((_userdatafromsnapshot));
   }
 }
