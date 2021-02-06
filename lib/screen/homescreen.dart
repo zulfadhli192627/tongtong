@@ -170,7 +170,7 @@ class _HomepageState extends State<Homepage> {
                           ),
                           //sign out button here
                           SizedBox(
-                            width: 120,
+                            width: 65,
                           ),
                           FlatButton.icon(
                             icon: Icon(Icons.person),

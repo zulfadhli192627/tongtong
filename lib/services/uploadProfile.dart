@@ -2,11 +2,7 @@ import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:tong_tong/model/user.dart';
-import 'package:tong_tong/services/createGroup.dart';
 import 'package:tong_tong/services/createProfile.dart';
-import 'package:tong_tong/services/database.dart';
 
 class UploadProfile extends StatefulWidget {
   final File file;

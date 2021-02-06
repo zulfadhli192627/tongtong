@@ -180,16 +180,11 @@ class _CreateProfileState extends State<CreateProfile> {
                     SizedBox(
                       height: 20,
                     ),
-                    RaisedButton(
-                      child: Text('Confirm'),
-                      onPressed: () {
-                        UploadProfile(
-                          email: widget.email,
-                          name: name,
-                          file: imageFile,
-                        );
-                      },
-                    ),
+                    UploadProfile(
+                      email: widget.email,
+                      name: name,
+                      file: imageFile,
+                    )
                   ],
                 ),
               ),

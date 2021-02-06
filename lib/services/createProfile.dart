@@ -26,14 +26,13 @@ class CreateProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _createGroup();
-    return Text('Success');
-    // RaisedButton(
-    //   child: Text('Proceed'),
-    //   onPressed: () {
-    //     Navigator.pop(context);
-    //     Navigator.push(
-    //         context, MaterialPageRoute(builder: (context) => Homepage()));
-    //   },
-    // );
+    return RaisedButton(
+      child: Text('Proceed'),
+      onPressed: () {
+        Navigator.pop(context);
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Homepage()));
+      },
+    );
   }
 }
