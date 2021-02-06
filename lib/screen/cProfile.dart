@@ -158,6 +158,9 @@ class _CreateProfileState extends State<CreateProfile> {
                 ],
               ),
             ),
+            SizedBox(
+              height: 20,
+            ),
             Form(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
@@ -179,8 +182,15 @@ class _CreateProfileState extends State<CreateProfile> {
                     RaisedButton(
                       child: Text('Confirm'),
                       onPressed: () async {
-                        await DatabaseService(email: widget.email)
+                        DatabaseService(email: widget.email)
                             .updateUserProfile(imageFile, name);
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Homepage(),
+                          ),
+                        );
                       },
                     ),
                   ],
