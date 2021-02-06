@@ -97,7 +97,7 @@ class _GroupState extends State<Group> {
           });
     }
 
-    Future<void> ImageDialog(BuildContext context, String url) {
+    Future<void> imageDialog(BuildContext context, String url) {
       return showDialog(
           context: context,
           builder: (BuildContext context) {
@@ -130,7 +130,7 @@ class _GroupState extends State<Group> {
                     .child(widget.group.imgurl)
                     .getDownloadURL();
 
-                ImageDialog(context, url);
+                imageDialog(context, url);
               },
               child: Text('View Receipt'),
             ),

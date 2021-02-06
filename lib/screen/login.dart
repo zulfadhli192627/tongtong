@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_login/flutter_login.dart';
+import 'package:tong_tong/screen/cProfile.dart';
 import 'package:tong_tong/services/auth.dart';
 import 'package:tong_tong/model/user.dart';
 import 'package:tong_tong/screen/homescreen.dart';
@@ -28,7 +29,9 @@ class _LoginState extends State<Login> {
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => Homepage(),
+          builder: (context) => CreateProfile(
+            email: data.name,
+          ),
         ));
     return null;
   }

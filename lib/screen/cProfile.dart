@@ -1,11 +1,15 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tong_tong/conts/textInputDecoration.dart';
+import 'package:tong_tong/screen/homescreen.dart';
+import 'package:tong_tong/services/database.dart';
 
 class CreateProfile extends StatefulWidget {
-  CreateProfile({Key key}) : super(key: key);
+  final String email;
+  CreateProfile({this.email});
 
   @override
   _CreateProfileState createState() => _CreateProfileState();
@@ -81,6 +85,7 @@ class _CreateProfileState extends State<CreateProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text('Creating Profile'),
         elevation: 0,
         backgroundColor: Color(0xff555555),
       ),
@@ -115,11 +120,18 @@ class _CreateProfileState extends State<CreateProfile> {
                         )
                       ],
                       shape: BoxShape.circle,
-                      image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: AssetImage('images/no_image.jpg'),
-                      ),
+                      image: imageFile != null
+                          ? DecorationImage(
+                              fit: BoxFit.cover,
+                              image: new FileImage(imageFile))
+                          : DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage('images/no_image.jpg'),
+                            ),
                     ),
+                  ),
+                  SizedBox(
+                    height: 20,
                   ),
                   Positioned(
                     bottom: 0,
@@ -166,7 +178,17 @@ class _CreateProfileState extends State<CreateProfile> {
                     ),
                     RaisedButton(
                       child: Text('Confirm'),
-                      onPressed: () async {},
+                      onPressed: () async {
+                        await DatabaseService(email: widget.email)
+                            .updateUserProfile(imageFile, name);
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Homepage(),
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),
