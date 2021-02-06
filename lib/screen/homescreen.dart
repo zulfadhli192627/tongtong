@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:tong_tong/services/auth.dart';
 import 'package:tong_tong/model/user.dart';
 import 'package:tong_tong/screen/billHome.dart';
-import 'package:tong_tong/screen/loanHome.dart';
+import 'package:tong_tong/screen/lendHome.dart';
 import 'package:tong_tong/screen/login.dart';
 
 class Homepage extends StatefulWidget {

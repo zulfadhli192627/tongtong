@@ -1,8 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import 'package:tong_tong/model/user.dart';
 import 'package:tong_tong/widget/lentList.dart';
 
 class LentDetail extends StatefulWidget {
+  GroupData group;
+  LentDetail({this.group});
   @override
   _LentDetailState createState() => _LentDetailState();
 }
@@ -27,7 +31,7 @@ class _LentDetailState extends State<LentDetail> {
               Container(
                 padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
                 child: Text(
-                  'McDonald',
+                  widget.group.groupname,
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 24.0,
@@ -37,7 +41,7 @@ class _LentDetailState extends State<LentDetail> {
               Container(
                 padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
                 child: Text(
-                  'RM00.00',
+                  "RM" + widget.group.tax,
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 24.0,
@@ -72,9 +76,9 @@ class _LentDetailState extends State<LentDetail> {
           padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
           child: ListView.builder(
             shrinkWrap: true,
-            itemCount: 2,
+            itemCount: widget.group.item.length,
             itemBuilder: (context, index) {
-              return LentList();
+              return LentList(item: widget.group.item[index]);
             },
           ),
         ),

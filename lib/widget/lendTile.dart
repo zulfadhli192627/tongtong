@@ -1,29 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:tong_tong/conts/deco.dart';
+import 'package:tong_tong/model/user.dart';
 import 'package:tong_tong/screen/lent.dart';
 import 'package:tong_tong/dump/loan.dart';
 
 class LoanTile extends StatelessWidget {
-  final String loantype;
-
-  LoanTile({this.loantype});
-
+  final GroupData group;
+  LoanTile({this.group});
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        if (loantype == 'lent')
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => LentDetail(),
-              ));
-        else if (loantype == 'loan')
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => LoanDetail(),
-              ));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => LentDetail(
+                group: group,
+              ),
+            ));
       },
       child: Container(
         decoration: tileDecoration(),
@@ -34,7 +28,7 @@ class LoanTile extends StatelessWidget {
             Container(
               padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
               child: Text(
-                'McD',
+                group.groupname,
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 24.0,
@@ -44,7 +38,7 @@ class LoanTile extends StatelessWidget {
             Container(
               padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
               child: Text(
-                'RM30.00',
+                group.tax,
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 24.0,
