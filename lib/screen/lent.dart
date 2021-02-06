@@ -7,8 +7,8 @@ import 'package:tong_tong/screen/lendHome.dart';
 import 'package:tong_tong/widget/lentList.dart';
 
 class LentDetail extends StatefulWidget {
-  GroupData group;
-  String email;
+  final GroupData group;
+  final String email;
   LentDetail({this.group, this.email});
   @override
   _LentDetailState createState() => _LentDetailState();
@@ -56,16 +56,16 @@ class _LentDetailState extends State<LentDetail> {
                       fontWeight: FontWeight.bold),
                 ),
               ),
-              Container(
-                padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
-                child: Text(
-                  "RM" + widget.group.tax,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 24.0,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
+              // Container(
+              //   padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
+              //   child: Text(
+              //     "RM" + widget.group.tax,
+              //     style: TextStyle(
+              //         color: Colors.white,
+              //         fontSize: 24.0,
+              //         fontWeight: FontWeight.bold),
+              //   ),
+              // ),
             ],
           ),
         ),

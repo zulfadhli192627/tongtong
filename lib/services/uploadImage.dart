@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tong_tong/model/user.dart';
 import 'package:tong_tong/services/createGroup.dart';
 import 'package:tong_tong/services/database.dart';
 
@@ -35,6 +37,7 @@ class _UploadState extends State<Upload> {
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<User>(context, listen: true);
     if (_uploadTask != null) {
       return StreamBuilder<StorageTaskEvent>(
           stream: _uploadTask.events,
@@ -50,7 +53,7 @@ class _UploadState extends State<Upload> {
                   CreateGroup(
                     groupName: widget.groupName,
                     groupid: widget.groupID,
-                    email: 'cibai@gmail.com',
+                    email: user.email,
                     tax: widget.tax,
                     fileName: fileName,
                   ),

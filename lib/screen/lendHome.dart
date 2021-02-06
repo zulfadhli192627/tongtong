@@ -36,16 +36,16 @@ class LoanPage extends StatelessWidget {
                           fontWeight: FontWeight.bold),
                     ),
                   ),
-                  Container(
-                    padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
-                    child: Text(
-                      'RM00.00',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 24.0,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
+                  // Container(
+                  //   padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
+                  //   child: Text(
+                  //     'RM00.00',
+                  //     style: TextStyle(
+                  //         color: Colors.white,
+                  //         fontSize: 24.0,
+                  //         fontWeight: FontWeight.bold),
+                  //   ),
+                  // ),
                 ],
               ),
             ),

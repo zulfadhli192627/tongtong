@@ -7,6 +7,7 @@ class LendList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final group = Provider.of<List<GroupData>>(context, listen: true);
+    print('This is' + group.length.toString());
     return ListView.builder(
       shrinkWrap: true,
       itemCount: group.length,
