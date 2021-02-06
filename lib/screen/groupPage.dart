@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tong_tong/conts/deco.dart';
 import 'package:tong_tong/conts/textInputDecoration.dart';
 import 'package:tong_tong/model/user.dart';
 import 'package:tong_tong/services/database.dart';
@@ -16,7 +17,7 @@ class Group extends StatefulWidget {
 }
 
 class _GroupState extends State<Group> {
-  String itemName, price, quantity;
+  String name, itemName, price, quantity;
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +32,19 @@ class _GroupState extends State<Group> {
                 child: Form(
                   child: Column(
                     children: <Widget>[
+                      Container(
+                        height: 50,
+                        child: TextFormField(
+                          decoration:
+                              textInputDecoration.copyWith(labelText: 'Name'),
+                          validator: (val) =>
+                              val.isEmpty ? 'Enter Loaner Name' : null,
+                          onChanged: (val) => setState(() => name = val),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
                       Container(
                         height: 50,
                         child: TextFormField(
@@ -67,6 +81,9 @@ class _GroupState extends State<Group> {
                           onChanged: (val) => setState(() => quantity = val),
                         ),
                       ),
+                      SizedBox(
+                        height: 20,
+                      ),
                       RaisedButton(
                           child: Text("Update"),
                           onPressed: () async {
@@ -80,7 +97,7 @@ class _GroupState extends State<Group> {
                                 .updateData({
                               "Item": FieldValue.arrayUnion([
                                 {
-                                  "name": 'Ali',
+                                  "name": name,
                                   "itemName": itemName,
                                   "price": price,
                                   "quantity": quantity,
@@ -208,7 +225,52 @@ class _GroupState extends State<Group> {
                   height: 20,
                 ),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(50, 0, 50, 0),
+                  padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+                  child: Container(
+                    decoration: tileDecoration(),
+                    padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Container(
+                          width: 130,
+                          padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                          child: Text(
+                            'Item Name',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 21.0,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        Container(
+                          width: 90,
+                          padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                          child: Text(
+                            'Quantity',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 21.0,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        Container(
+                          width: 90,
+                          padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                          child: Text(
+                            'Price',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 21.0,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
                   child: ListView.builder(
                       shrinkWrap: true,
                       itemCount: widget.group.item.length,
@@ -243,17 +305,6 @@ class _GroupState extends State<Group> {
                         onPressed: () {
                           _showChoiceDialog(context);
                         }),
-                    // SizedBox(
-                    //   width: 30,
-                    // ),
-                    // RaisedButton(
-                    //     child: Text('Calculate Total'),
-                    //     onPressed: () {
-                    //       double total = 0;
-
-                    //       total = total * int.parse(widget.group.tax);
-                    //       totalDialog(context, total);
-                    //     }),
                   ],
                 )
               ],

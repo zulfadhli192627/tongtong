@@ -138,6 +138,10 @@ class _LentDetailState extends State<LentDetail> {
           ),
         )
       ]),
+      bottomNavigationBar: Container(
+        height: 50.0,
+        color: Colors.white,
+      ),
     );
   }
 }

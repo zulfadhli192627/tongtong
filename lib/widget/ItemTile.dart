@@ -13,8 +13,6 @@ class BillItem extends StatefulWidget {
 }
 
 class _BillItemState extends State<BillItem> {
-  List<ListItem<String>> list;
-
   Future<void> totalDialog(BuildContext context, double total) {
     return showDialog(
         context: context,
@@ -39,44 +37,45 @@ class _BillItemState extends State<BillItem> {
         totalDialog(context, total);
       },
       child: Container(
-        decoration: tileDecoration().copyWith(
-          color: list[widget.index].isSelected ? Colors.green : Colors.white,
-        ),
-        padding: EdgeInsets.fromLTRB(0, 15, 0, 15),
+        decoration: tileDecoration(),
+        padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             // Item Name -----------------------------------------------------------
             Container(
+              width: 130,
               padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
               child: Text(
                 widget.item.item[widget.index].itemName,
                 style: TextStyle(
                     color: Colors.black,
-                    fontSize: 24.0,
-                    fontWeight: FontWeight.bold),
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.w400),
               ),
             ),
             // Quantity-----------------------------------------------------------
             Container(
+              width: 90,
               padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
               child: Text(
                 widget.item.item[widget.index].quantity,
                 style: TextStyle(
                     color: Colors.black,
-                    fontSize: 24.0,
-                    fontWeight: FontWeight.bold),
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.w400),
               ),
             ),
             // Price -----------------------------------------------------------
             Container(
+              width: 90,
               padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
               child: Text(
                 'RM' + widget.item.item[widget.index].price,
                 style: TextStyle(
                     color: Colors.black,
-                    fontSize: 24.0,
-                    fontWeight: FontWeight.bold),
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.w400),
               ),
             ),
           ],
@@ -84,10 +83,4 @@ class _BillItemState extends State<BillItem> {
       ),
     );
   }
-}
-
-class ListItem<GroupData> {
-  bool isSelected = false;
-  GroupData data;
-  ListItem(this.data);
 }
