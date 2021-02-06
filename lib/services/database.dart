@@ -55,13 +55,13 @@ class DatabaseService {
 
     _uploadTask = _storage.ref().child('user/' + fileName).putFile(file);
 
-    dynamic url = await FirebaseStorage.instance
-        .ref()
-        .child('user')
-        .child(fileName)
-        .getDownloadURL();
-
     if (_uploadTask.isComplete) {
+      dynamic url = await FirebaseStorage.instance
+          .ref()
+          .child('user')
+          .child(fileName)
+          .getDownloadURL();
+
       await tongCollection
           .document(email)
           .setData({'name': name, 'picUrl': url});

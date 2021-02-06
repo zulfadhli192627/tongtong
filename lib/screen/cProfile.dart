@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:tong_tong/conts/textInputDecoration.dart';
 import 'package:tong_tong/screen/homescreen.dart';
 import 'package:tong_tong/services/database.dart';
+import 'package:tong_tong/services/uploadProfile.dart';
 
 class CreateProfile extends StatefulWidget {
   final String email;
@@ -181,15 +182,11 @@ class _CreateProfileState extends State<CreateProfile> {
                     ),
                     RaisedButton(
                       child: Text('Confirm'),
-                      onPressed: () async {
-                        DatabaseService(email: widget.email)
-                            .updateUserProfile(imageFile, name);
-                        Navigator.pop(context);
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Homepage(),
-                          ),
+                      onPressed: () {
+                        UploadProfile(
+                          email: widget.email,
+                          name: name,
+                          file: imageFile,
                         );
                       },
                     ),

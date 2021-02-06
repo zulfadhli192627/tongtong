@@ -23,7 +23,6 @@ class AuthService {
       AuthResult result = await _auth.signInWithEmailAndPassword(
           email: data.name, password: data.password);
       FirebaseUser user = result.user;
-      await FlutterSession().set("email", data.name);
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
@@ -39,6 +38,7 @@ class AuthService {
       FirebaseUser user = result.user;
       //create doc for user using email
       await DatabaseService(email: data.name).updateUserData('dummy');
+      return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
       return null;

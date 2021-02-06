@@ -157,14 +157,15 @@ class _HomepageState extends State<Homepage> {
                         children: <Widget>[
                           CircleAvatar(
                             //Put user photo here
-                            backgroundImage: NetworkImage(userData.picUrl),
+                            backgroundImage:
+                                NetworkImage(userData.picUrl ?? ''),
                             radius: 30,
                           ),
                           SizedBox(
                             width: 15.0,
                           ),
                           Text(
-                            "Hi," + userData.name,
+                            "Hi," + userData.name ?? '',
                             style: TextStyle(color: Colors.white, fontSize: 20),
                           ),
                           //sign out button here
