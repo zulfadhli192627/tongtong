@@ -5,10 +5,10 @@ class User {
 }
 
 class UserData {
-  final String email;
   final String picUrl;
+  final String name;
 
-  UserData({this.email, this.picUrl});
+  UserData({this.picUrl, this.name});
 }
 
 class Menu {

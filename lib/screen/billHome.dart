@@ -22,9 +22,7 @@ class BillHome extends StatelessWidget {
         ),
         body: Container(
           decoration: BoxDecoration(),
-          child: BillList(
-            email: user.email,
-          ),
+          child: BillList(),
         ),
         floatingActionButton: TwoOptionButton(),
       ),

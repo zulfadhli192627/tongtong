@@ -5,8 +5,6 @@ import 'package:tong_tong/services/database.dart';
 import 'package:tong_tong/widget/bill_tile.dart';
 
 class BillList extends StatefulWidget {
-  String email;
-  BillList({this.email});
   @override
   _BillListState createState() => _BillListState();
 }
