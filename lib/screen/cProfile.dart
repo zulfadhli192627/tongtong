@@ -149,7 +149,7 @@ class _CreateProfileState extends State<CreateProfile> {
                       ),
                       child: IconButton(
                           icon: Icon(Icons.edit),
-                          color: Colors.white,
+                          color: Colors.blue,
                           onPressed: () {
                             _showChoiceDialog(context);
                           }),
