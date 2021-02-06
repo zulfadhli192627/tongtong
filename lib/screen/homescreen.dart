@@ -107,6 +107,7 @@ class _HomepageState extends State<Homepage> {
                           color: Colors.white,
                         ),
                         onPressed: () {
+                          _bannerAd.dispose();
                           Navigator.push(
                             context,
                             MaterialPageRoute(

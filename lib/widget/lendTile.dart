@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:tong_tong/conts/deco.dart';
 import 'package:tong_tong/model/user.dart';
 import 'package:tong_tong/screen/lent.dart';
@@ -9,6 +10,7 @@ class LoanTile extends StatelessWidget {
   LoanTile({this.group});
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<User>(context, listen: true);
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -16,6 +18,7 @@ class LoanTile extends StatelessWidget {
             MaterialPageRoute(
               builder: (context) => LentDetail(
                 group: group,
+                email: user.email,
               ),
             ));
       },
