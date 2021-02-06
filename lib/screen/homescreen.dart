@@ -25,7 +25,7 @@ class _HomepageState extends State<Homepage> {
 
   BannerAd createBannerAd() {
     return BannerAd(
-        adUnitId: 'ca-app-pub-6206074243422299/6285759440',
+        adUnitId: 'ca-app-pub-6206074243422299/4135374294',
         size: AdSize.smartBanner,
         listener: (MobileAdEvent event) {
           print('Banner event: $event');
@@ -205,7 +205,7 @@ class _HomepageState extends State<Homepage> {
   void initState() {
     super.initState();
     FirebaseAdMob.instance
-        .initialize(appId: 'ca-app-pub-6206074243422299~3820761092');
+        .initialize(appId: 'ca-app-pub-6206074243422299/4135374294');
     _bannerAd = createBannerAd()..load();
   }
 
